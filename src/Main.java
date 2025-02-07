@@ -37,5 +37,10 @@ public class Main {
             System.out.println("\n" + funcao + ":");
             lista.forEach(f -> System.out.println(f.getNome()));
         });
+
+        System.out.println("\nAniversariantes de Outubro e Dezembro:");
+        funcionarios.stream()
+                .filter(f -> f.getDataNascimento().getMonthValue() == 10 || f.getDataNascimento().getMonthValue() == 12)
+                .forEach(f -> System.out.println(f.getNome()));
     }
 }
