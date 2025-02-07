@@ -1,10 +1,7 @@
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -42,5 +39,9 @@ public class Main {
         funcionarios.stream()
                 .filter(f -> f.getDataNascimento().getMonthValue() == 10 || f.getDataNascimento().getMonthValue() == 12)
                 .forEach(f -> System.out.println(f.getNome()));
+
+        Funcionario maisVelho = Collections.min(funcionarios, Comparator.comparing(Funcionario::getDataNascimento));
+        System.out.printf("\nFuncionário mais velho: %s - %d anos%n",
+                maisVelho.getNome(), LocalDate.now().getYear() - maisVelho.getDataNascimento().getYear());
     }
 }
