@@ -25,5 +25,7 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         funcionarios.forEach(f -> System.out.printf("%s - %s - R$ %,.2f - %s%n",
                 f.getNome(), f.getDataNascimento().format(formatter), f.getSalario(), f.getFuncao()));
+
+        funcionarios.forEach(f -> f.setSalario(f.getSalario().multiply(new BigDecimal("1.10"))));
     }
 }
