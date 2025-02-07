@@ -4,6 +4,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,5 +29,13 @@ public class Main {
                 f.getNome(), f.getDataNascimento().format(formatter), f.getSalario(), f.getFuncao()));
 
         funcionarios.forEach(f -> f.setSalario(f.getSalario().multiply(new BigDecimal("1.10"))));
+
+        Map<String, List<Funcionario>> funcionariosPorFuncao = funcionarios.stream()
+                .collect(Collectors.groupingBy(Funcionario::getFuncao));
+
+        funcionariosPorFuncao.forEach((funcao, lista) -> {
+            System.out.println("\n" + funcao + ":");
+            lista.forEach(f -> System.out.println(f.getNome()));
+        });
     }
 }
