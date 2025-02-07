@@ -47,5 +47,10 @@ public class Main {
         funcionarios.sort(Comparator.comparing(Funcionario::getNome));
         System.out.println("\nFuncionários em ordem alfabética:");
         funcionarios.forEach(f -> System.out.println(f.getNome()));
+
+        BigDecimal totalSalarios = funcionarios.stream()
+                .map(Funcionario::getSalario)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.out.printf("\nTotal de salários: R$ %,.2f%n", totalSalarios);
     }
 }
