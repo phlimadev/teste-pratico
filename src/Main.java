@@ -18,5 +18,7 @@ public class Main {
                 new Funcionario("Heloísa", LocalDate.of(2003, 5, 24), new BigDecimal("1606.85"), "Eletricista"),
                 new Funcionario("Helena", LocalDate.of(1996, 9, 2), new BigDecimal("2799.93"), "Gerente")
         ));
+
+        funcionarios.removeIf(f -> f.getNome().equals("João"));
     }
 }
