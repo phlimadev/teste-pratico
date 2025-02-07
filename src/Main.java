@@ -52,5 +52,9 @@ public class Main {
                 .map(Funcionario::getSalario)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         System.out.printf("\nTotal de salários: R$ %,.2f%n", totalSalarios);
+
+        System.out.println("\nSalários mínimos por funcionário:");
+        funcionarios.forEach(f -> System.out.printf("%s - %.2f salários mínimos%n",
+                f.getNome(), f.getSalario().divide(new BigDecimal("1212.00"), 2, BigDecimal.ROUND_HALF_UP)));
     }
 }
