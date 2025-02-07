@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,5 +21,9 @@ public class Main {
         ));
 
         funcionarios.removeIf(f -> f.getNome().equals("João"));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        funcionarios.forEach(f -> System.out.printf("%s - %s - R$ %,.2f - %s%n",
+                f.getNome(), f.getDataNascimento().format(formatter), f.getSalario(), f.getFuncao()));
     }
 }
