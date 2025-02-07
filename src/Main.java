@@ -43,5 +43,9 @@ public class Main {
         Funcionario maisVelho = Collections.min(funcionarios, Comparator.comparing(Funcionario::getDataNascimento));
         System.out.printf("\nFuncionário mais velho: %s - %d anos%n",
                 maisVelho.getNome(), LocalDate.now().getYear() - maisVelho.getDataNascimento().getYear());
+
+        funcionarios.sort(Comparator.comparing(Funcionario::getNome));
+        System.out.println("\nFuncionários em ordem alfabética:");
+        funcionarios.forEach(f -> System.out.println(f.getNome()));
     }
 }
